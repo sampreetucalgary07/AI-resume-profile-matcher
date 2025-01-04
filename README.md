@@ -10,6 +10,10 @@ This project harnesses the power of Large Language Model (LLM) APIs to revolutio
 - **Match Score Generation**: Calculates compatibility scores between candidate profiles and job requirements.
 - **Skill Gap Analysis**: Identifies missing skills in candidate profiles compared to job postings.
 
+### Home page:
+
+[homepage]{img/homepage.png}
+
 ## How to use it
 
 Clone AI-resume-profile-matcher
