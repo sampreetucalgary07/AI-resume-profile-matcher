@@ -1,8 +1,6 @@
 import streamlit as st
 from src.utils import load_json, format_resume
-
-config_path = "auto_job/config.json" # Path to the config file
-config = load_json(config_path)
+config = load_json("config.json")
 
 
 # ------------------- HOME PAGE -------------------
@@ -25,7 +23,7 @@ def display_base_interface(session_input_text):
         st.header("Job Profile", divider= "rainbow")
         input_text = st.text_area("Enter Job profile:",value= session_input_text, placeholder="Type something...", height = 500)
 
-    json_resume = load_json("auto_job/data/resume_info.json")
+    json_resume = load_json("data/resume_info.json")
 
     resume_text = format_resume(json_resume)
     with col2:

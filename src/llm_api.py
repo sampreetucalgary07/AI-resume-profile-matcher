@@ -1,7 +1,7 @@
 import google.generativeai as genai
 from utils import load_json
 
-api_keys = load_json("auto_job/api_keys.json")
+api_keys = load_json("api_keys.json")
 
 
 def gemini_model(api_key = api_keys["google_api_studio"], model_name = "gemini-1.5-flash"):

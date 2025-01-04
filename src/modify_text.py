@@ -7,9 +7,6 @@ from llm_api import gemini_model, call_gemini_api
 from prompts import shorten_job_profile_prompt, check_job_match_score_prompt, missing_skills_prompt, divide_missing_skills_prompt
 # Importing the LLM API function
 
-
-prompts = load_json("auto_job/prompts/prompts.json")# Load the prompts
-
 # Load the LLM model
 
 def clean_job_profile(input_text, model_name, temperature):

@@ -5,7 +5,8 @@
     "gemini-1.5-pro",
     "gemini-2.0-flash-exp"
   ],
-  "prompts_path": "auto_job/prompts/prompts.json",
+  "prompts_path": "prompts/prompts.json",
   "default_temperature": 0.2,
-  "resume_path": "auto_job/data/resume_info.json"
+  "resume_path": "data/resume_info.json",
+  "css_path": "assets/styles.css"
 }

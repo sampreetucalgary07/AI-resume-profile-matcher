@@ -16,12 +16,12 @@ def load_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Load the CSS file
-load_css("auto_job/assets/styles.css")
+load_css("assets/styles.css")
 
 # Load the sidebar settings
 model_name, temperature = sidebar_settings()
 
-json_resume = load_json("auto_job/data/resume_info.json")
+json_resume = load_json("data/resume_info.json")
 
 resume_text = format_resume(json_resume)
 
@@ -60,44 +60,12 @@ if st.button("Apply settings"):
         if st.session_state.need_missing_skills:
             with st.spinner("Analyzing missing skills..."):
                 st.session_state["response_miss_skills"] = missing_skills(st.session_state["job_profile"], resume_text, model_name=model_name, temperature=temperature)
-
-            # Simulated response_miss_skills dictionary
-                # st.session_state["response_miss_skills"] = {
-                #     "Programming Languages": ["R", "Java", "Scala"],
-                #     "Tools": ["Power BI", "NoSQL databases", "APIs", "Web scraping", "Cloud computing", "Big data frameworks"],
-                #     "Libraries": ["Matplotlib", "Seaborn", "Plotly"],
-                #     "Frameworks": [],
-                #     "Soft Skills": ["Decisiveness", "Initiative", "Professional Development", "Personal Integrity"],
-                #     "Miscellaneous": [
-                #         "Experience with various data sources, formats, and platforms",
-                #         "Data cleaning",
-                #         "Preprocessing",
-                #         "Exploratory analysis",
-                #         "Descriptive and inferential statistics",
-                #         "Machine learning",
-                #         "Deep learning",
-                #         "Natural language processing",
-                #         "Computer vision",
-                #         "Recommender systems",
-                #         "Data incidents analysis and troubleshooting",
-                #         "Guidance of data sources and services",
-                #         "Data management program support"
-                #     ]
-                # }
-                
                 
                         
         if st.session_state.need_divide_missing_skills:
             with st.spinner("Dividing missing skills..."):    
                 st.session_state["divide_missing_skills"] = divide_missing_skills(st.session_state["response_miss_skills"], model_name=model_name, temperature=temperature)
-                # st.session_state["divide_missing_skills"]= {'Software Developer': ['Proficient in Java, Python, C++, JavaScript', 'Experience with Spring Boot, Node.js, React, Angular', 'REST API development and Microservices architecture', 'Agile development methodologies (Scrum, Kanban)', 'Version control systems (Git, SVN)', 'Database design and SQL', 'Cloud platforms (AWS, Azure, GCP)', 'Software testing and debugging', 'Experience with DevOps tools and CI/CD pipelines'], 
-                #                                 'ML Engineer/Data Scientist': ['Proficient in Python (Pandas, NumPy, Scikit-learn)', 'Experience with TensorFlow, PyTorch, Keras', 'Machine learning algorithms (regression, classification, clustering)', 'Deep learning models (CNNs, RNNs, Transformers)', 'Data preprocessing and feature engineering', 'Model evaluation and selection', 'Model deployment and monitoring', 'Big data technologies (Spark, Hadoop)', 'Experience with cloud-based ML platforms (AWS SageMaker, Google Cloud AI Platform)', 'Natural Language Processing (NLP) techniques'], 
-                #                                 'Data Analyst': ['Proficient in SQL and data manipulation languages', 'Experience with data visualization tools (Tableau, Power BI)', 'Data mining and exploratory data analysis (EDA)', 'Statistical analysis and hypothesis testing', 'Data cleaning and transformation', 'Data storytelling and presentation skills', 'Experience with data warehousing and ETL processes', 'Business intelligence (BI) tools and techniques', 'Understanding of different data types and structures']}
-                #print(response_divide_missing_skills)
-            
-        
-       
-            
+                
     else:
         st.error("Please enter some text.") 
         

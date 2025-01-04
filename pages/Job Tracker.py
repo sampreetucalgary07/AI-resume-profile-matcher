@@ -11,9 +11,9 @@ def load_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Load the CSS file
-load_css("auto_job/assets/styles.css")
+load_css("assets/styles.css")
 
-df = pd.read_csv("auto_job/data/job_tracker/job_applications.csv")
+df = pd.read_csv("data/job_tracker/job_applications.csv")
 df['Date'] = pd.to_datetime(df['Date'])
 
 display_job_tracker_interface()
@@ -58,9 +58,18 @@ if st.session_state.dataframe_changed:
         
         with st.spinner("Saving changes..."):
 
-            st.session_state.job_tracker_data_frame.to_csv("auto_job/data/job_tracker/job_applications.csv", index=False)
+            st.session_state.job_tracker_data_frame.to_csv("data/job_tracker/job_applications.csv", index=False)
         
             st.warning("Changes saved successfully!")
             st.session_state.dataframe_changed = False
 
 
+st.markdown(
+    """
+    <footer>
+        <hr>
+        <p style="text-align:center; font-size:0.8em;">Built with &#10084;&#65039; by <a href="https://www.linkedin.com/in/sampreet-v-70b36b1a1" target="_blank">Sampreet Vaidya</a></p>
+    </footer>
+    """,
+    unsafe_allow_html=True,
+)
