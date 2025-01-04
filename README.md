@@ -53,24 +53,9 @@ streamlit run Homepage.py
 
 You can also deploy the app using streamlit cloud.
 
-## Extra
+## Extras
 
 Make use of the job tracker feature to keep track of the jobs you've applied to. Track changes and save it periodically.
-
-## Contact
-
-For any questions or feedback, please open an issue in the GitHub repository or contact the maintainer at [sam.vaidya.analyst@gmail.com].
-
-## Roadmap and Upcoming Features
-
-### Planned Enhancements
-
-- [ ] Add more LLM models. Currently supports Gemini family of models.
-- [ ] Generate resume and cover letter.
-
-### Future Vision
-
-🚀 Our goal is to transform job searching from a manual process into an intelligent, data-driven experience.
 
 ### Community Input
 
@@ -84,6 +69,12 @@ We encourage feature suggestions:
 
 - [x] Basic job profile matching
 - [x] AI-powered skill gap analysis
-- [ ] Advanced matching algorithms
 
-**Last Updated**: January 2025
+### Planned Enhancements
+
+- [ ] Add more LLM models. Currently supports Gemini family of models.
+- [ ] Generate resume and cover letter.
+
+### Contact
+
+For any questions or feedback, please open an issue in the GitHub repository or contact the maintainer at [sam.vaidya.analyst@gmail.com].
