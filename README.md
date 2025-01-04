@@ -36,7 +36,7 @@ pip install -r requirements.txt
 
 Update path : dEdit the file `data/resume_info.json` with your profile information.
 
-Create a file named `api_keys.json` and add your Google Studio key in the following format::
+Create a file named `api_keys.json` and add your [Google Studio key](https://aistudio.google.com/app/apikey) in the following format:
 
 ```bash
 {
