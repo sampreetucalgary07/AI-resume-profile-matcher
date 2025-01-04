@@ -12,7 +12,7 @@ This project harnesses the power of Large Language Model (LLM) APIs to revolutio
 
 ### Home page:
 
-[homepage]{img/homepage.png}
+![homepage](img/homepage.png)
 
 ## How to use it
 
