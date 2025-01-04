@@ -1,0 +1,89 @@
+{
+  "education": {
+    "degree": "Master of Science",
+    "fieldOfStudy": "Software Engineering",
+    "school": "University of Calgary",
+    "courses": [
+      "Software Systems",
+      "Data Analytics",
+      "Machine Learning",
+      "Agent-based Software",
+      "IoT"
+    ]
+  },
+
+  "work": {
+    "company1": {
+      "name": "Telus Communications",
+      "position": "Research Intern (Content Delivery team)",
+      "startDate": "2023-05",
+      "endDate": "2024-12",
+      "highlights": [
+        "Developed code for adaptation algorithms for a python-based streaming player in a Docker environment.",
+        "Led the integration of Reinforcement Learning (RL) algorithms to dynamically select parameters for adaptations. Reduced stall duration by up to 56%, under different testing environments.",
+        "Contributed to the development of custom testbed with Javascript-based streaming player (Shaka) utilizing puppeteer in Docker. Collaborated with cross-functional teams to enhance performance.",
+        "Streamlined CI pipelines by improving workflows with GitHub Actions and implementing unit tests using Pytest."
+      ]
+    },
+    "company2": {
+      "name": "University of Calgary",
+      "position": "Research Assistant",
+      "startDate": "2022-09",
+      "endDate": "2024-12",
+      "highlights": [
+        "Worked in Waves Lab on a novel frame size prediction integrating machine learning (ML) algorithms using scikit-learn and TensorFlow to enable network resource allocation in cloud server.",
+        "Achieved a 54% improvement in Quality of Service (QoS) by using transfer learning techniques for a new user network traffic prediction. Presented this work at an international conference.",
+        "Developed a compression technique for 8K virtual reality frames using generative model (VAE-GAN) in pyTorch, achieving 45.1% improvement while maintaining compatibility with existing video infrastructure.",
+        "Carried out experiments, trained models, documented results to suggest optimal algorithms and configurations."
+      ]
+    },
+    "company3": {
+      "name": "University of Calgary",
+      "position": "Machine Learning Intern",
+      "startDate": "2022-05",
+      "endDate": "2022-08",
+      "highlights": [
+        "Designed SQL queries to extract data from large-scale network traffic data on MySQL database.",
+        "Conducted exploratory data analysis (EDA) on frame-level data of network using Python (pandas, NumPy).",
+        "Created Tableau dashboards integrating MySQL to visualize real-time VR performance metrics.",
+        "Managed two junior team members on corresponding research projects involving channel prediction for BCI."
+      ]
+    }
+  },
+  "skills": {
+    "Programming Languages": [
+      "Python",
+      "R",
+      "Shell scripting",
+      "SQL",
+      "Java",
+      "HTML",
+      "Javascript"
+    ],
+    "Tools": [
+      "Jupyter",
+      "GCP",
+      "Tableau",
+      "Docker",
+      "Git",
+      "PyTest",
+      "Jira",
+      "Power BI",
+      "Spark",
+      "Microsoft Excel"
+    ],
+    "Libraries": [
+      "PyTorch",
+      "TensorFlow",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn",
+      "XGBoost"
+    ],
+    "Soft skills": [
+      "Documentation Skills",
+      "Collaboration",
+      "Agile Methodology"
+    ]
+  }
+}

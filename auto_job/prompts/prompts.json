@@ -1,0 +1,30 @@
+{
+  "job_profile_clean": {
+    "prompt": "You are expert resume builder, but first you need to make sure to extract relevant job skills/experience/education/any other special requirements required for the specific job profile below in short. Any other input than a job profile, just type 'Don't possess that knowledge'."
+  },
+  "match_score": {
+    "prompt": "You are expert in job profile matching, Below is given job profile and the resume. As an expert, you need to score them between 1-100 based on how well the resume matches the job profile. 1 being the lowest and 100 being the highest. If the job profile doesn't seem like a job profile, score will be 0. Please provide your score. JUST DIGITS, nothing else. \n",
+    "separator": "\n RESUME : \n"
+  },
+  "missing_skills": {
+    "prompt": "You are an expert in analyzing job profiles and resumes to identify skill gaps. Below is a job profile and a corresponding resume. Your task is to identify the missing skills in the resume that are required for the job profile. Read carefully and divide the missing skills into 5 different categories: Programming Languages, Tools, Libraries, Soft skills, and Miscellaneous. Just mention the missing skills in these categories in .json format, no explanation needed. The format of the .json file should be as follows: \n { \n \"Programming Languages\": [\"skill1\", \"skill2\"], \n \"Tools\": [\"skill3\", \"skill4\"], \n \"Libraries\": [\"skill5\", \"skill6\"], \n \"Soft Skills\": [\"skill9\", \"skill10\"], \n \"Miscellaneous\": [\"skill11\", \"skill12\"] \n }. If there are no missing skills in a category, leave it empty. Input text other than a job profile or resume will be considered as 'Don't possess that knowledge'.",
+    "separator": "\n RESUME : \n"
+  },
+  "divide_missing_skills": {
+    "prompt": "You are an expert. Given below the missing skills in the resume, divide them into 3 NON-OVERLAPPING skills : 1)Software developer, 2)ML Engineer/Data Scientist, and 3)Data Analyst. Make sure that you are analysing JUST THE MISSING SKILLS, If the skills doesn't fit into any of the categories, don't include them in any category. Produce a .json file. Make sure the .json format is correct. The format of the .json file should be as follows: \n { \n \"Software developer\": [\"skill1\", \"skill2\"], \n \"ML Engineer/Data Scientist\": [\"skill3\", \"skill4\"], \n \"Data Analyst\": [\"skill5\", \"skill6\"] \n }"
+  },
+  "integrate_missing_skills": {
+    "prompt": "You are an expert resume maker and you want to be selected for job but not fake it. Given below are company highlights and missing skills of a particular category from a resume. You need to integrate the missing skills into the company highlights in a way that the skills are highlighted in the context of the company highlights. DON'T FORCE THE MISSING SKILL TO BE INCLUDED, ONLY INCLUDE WHEN YOU THINK ITS RELEVANT WITH THE JOB DONE IN THE COMPANY HIGHLIGHT. The final output should be a latex itemize list. The total number of words in each highlight cna be lower but should not exceed what was originally provided. The final output should be in the following format: \n\n \\begin{itemize} \n \\item Highlight 1 \n \\item Highlight 2 \n \\end{itemize} \n\n",
+    "seperator1": "\nCOMPANY HIGHLIGHTS :\n",
+    "seperator2": "\nMISSING SKILLS :\n"
+  },
+  "correct_skill_set": {
+    "prompt": "You are an expert resume maker. Given below are the missing skills in the resume. You need to correct the missing skills in the resume. The missing skills are divided into 4 categories: Programming Languages, Tools, Libraries, Soft skills. DO NOT ADD ANYTHING THAT IS NOT RELEVANT AND IS NOT DESCRIBED RESUME. THE MOST RELEVANT SKILLS FIRST IN EACH CATEGORY. DO NOT EXCEED THE NO. OF SKills initially present as this would make the pdf look bad. The final output should be in the following format: \textbf{Programming Languages:} skill1, skill2,...\\ \textbf{Tools:} skill3, skill4,...\\ \textbf{Libraries:} skill5, skill6,..\\ \textbf{Soft Skills:} skill9, skill10..",
+    "seperator1": "\n SKILLS CURRENTLY IN RESUME : \n",
+    "seperator2": "\n MISSING SKILLS : \n"
+  },
+  "cover_letter": {
+    "prompt": "You are a cover letter generator. Your task is to create professional and concise cover letters",
+    "seperator1": "To compose a compelling cover letter, you must scrutinise the job description for key qualifications. Begin with a succinct introduction about the candidate's identity and career goals. Highlight skills aligned with the job, underpinned by tangible examples. Incorporate details about the company, emphasising its mission or unique aspects that align with the candidate's values. Conclude by reaffirming the candidate's suitability, inviting further discussion. Use job-specific terminology for a tailored and impactful letter, maintaining a professional style suitable for a >[job role]. Please provide your response in under 200 words."
+  }
+}
