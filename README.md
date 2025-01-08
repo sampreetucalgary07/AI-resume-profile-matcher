@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project harnesses the power of Large Language Model (LLM) APIs to revolutionize job profile analysis and matching. Our tool streamlines the recruitment process and empowers job seekers with valuable insights.
+This project harnesses the power of Large Language Model (LLM) APIs for job profile analysis and matching. This tool can streamline the recruitment process and empower job seekers with valuable insights about the skills required.
 
 ## Key Features
 
