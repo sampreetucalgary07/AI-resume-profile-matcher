@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume & Job Profile Matcher</title>
+  <link rel="stylesheet" href="assets/web_app.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+</head>
+<body>
+
+  <!-- Top App Navigation Bar -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">AI</div>
+      <div class="brand-title">AI Resume & Job Profile Matcher</div>
+    </div>
+
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="tab-matcher">
+        <span>📄</span> Resume Matcher
+      </button>
+      <button class="tab-btn" data-tab="tab-tracker">
+        <span>📋</span> Job Tracker
+      </button>
+    </nav>
+
+    <div class="header-status">
+      <span class="status-dot"></span>
+      <span>Local HTTP Server Active</span>
+    </div>
+  </header>
+
+  <!-- Application Body -->
+  <div class="app-container">
+
+    <!-- Sidebar Settings -->
+    <aside class="app-sidebar">
+      <div class="sidebar-title">⚙️ Model Settings</div>
+
+      <div class="setting-group">
+        <label for="modelSelect">Choose a Model</label>
+        <select id="modelSelect">
+          <option value="gemini-1.5-flash">gemini-1.5-flash</option>
+          <option value="gemini-1.5-flash-8b">gemini-1.5-flash-8b</option>
+          <option value="gemini-1.5-pro">gemini-1.5-pro</option>
+          <option value="gemini-2.0-flash-exp">gemini-2.0-flash-exp</option>
+          <option value="ollama/llama3.2">ollama/llama3.2 (Local)</option>
+          <option value="ollama/llama3">ollama/llama3 (Local)</option>
+          <option value="ollama/mistral">ollama/mistral (Local)</option>
+          <option value="ollama/phi3">ollama/phi3 (Local)</option>
+        </select>
+      </div>
+
+      <div class="setting-group">
+        <label for="tempSlider">Temperature: <span id="tempVal" class="slider-val">0.2</span></label>
+        <div class="slider-container">
+          <input type="range" id="tempSlider" min="0.0" max="1.0" step="0.1" value="0.2">
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label for="apiKeyInput">Gemini API Key (Optional)</label>
+        <input type="password" id="apiKeyInput" placeholder="AIzaSy... or from api_keys.json">
+        <span style="font-size: 11px; color: #64748b;">Saved in your browser or automatically loaded from <code>api_keys.json</code></span>
+      </div>
+
+      <div class="sidebar-info-box">
+        💡 <strong>Quick Tip</strong>:
+        You can customize your base profile in <code>data/resume_info.json</code>. The app automatically updates your formatted resume here.
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+
+      <!-- TAB 1: RESUME MATCHER -->
+      <section id="tab-matcher" class="tab-pane active">
+
+        <!-- 2 Columns: Job Profile & Resume -->
+        <div class="columns-grid">
+          
+          <!-- Column 1: Job Profile -->
+          <div class="column-card">
+            <div class="column-header">
+              <div class="column-title">Job Profile</div>
+              <div style="display: flex; gap: 6px;">
+                <button id="btnLoadSample" class="quick-action-btn" title="Paste a sample Job Description for testing">Load Sample</button>
+                <button id="btnClearJob" class="quick-action-btn" title="Clear text">Clear</button>
+              </div>
+            </div>
+            <div class="rainbow-divider"></div>
+            <textarea id="jobProfileInput" class="text-area-box" placeholder="Paste Job Profile / Description here..."></textarea>
+          </div>
+
+          <!-- Column 2: Resume Profile -->
+          <div class="column-card">
+            <div class="column-header">
+              <div class="column-title">Resume</div>
+              <span style="font-size: 12px; color: #64748b;">(data/resume_info.json)</span>
+            </div>
+            <div class="rainbow-divider"></div>
+            <textarea id="resumeBox" class="text-area-box" readonly placeholder="Loading resume data..."></textarea>
+          </div>
+
+        </div>
+
+        <!-- 4 Toggles Bar -->
+        <div class="toggles-bar">
+          <div class="toggle-item">
+            <span class="toggle-label">Shorten Job Profile</span>
+            <label class="switch">
+              <input type="checkbox" id="toggleShorten" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <span class="toggle-label">Calculate Match Score</span>
+            <label class="switch">
+              <input type="checkbox" id="toggleScore" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <span class="toggle-label">Find Missing Skills</span>
+            <label class="switch">
+              <input type="checkbox" id="toggleMissing" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <span class="toggle-label">Divide Missing Skills</span>
+            <label class="switch">
+              <input type="checkbox" id="toggleDivide" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Apply Button -->
+        <div class="action-btn-container">
+          <button id="btnApply" class="primary-apply-btn">
+            Apply settings
+          </button>
+        </div>
+
+        <!-- Dynamic Results Container -->
+        <div id="resultsContainer" class="results-container">
+          <!-- Dynamically populated after clicking Apply settings -->
+        </div>
+
+      </section>
+
+      <!-- TAB 2: JOB TRACKER -->
+      <section id="tab-tracker" class="tab-pane">
+        
+        <div class="tracker-header-actions">
+          <div class="tracker-title">Job Application Tracker</div>
+          <div class="tracker-actions-group">
+            <button id="btnAddApp" class="btn-secondary">+ Add Application</button>
+            <button id="btnExportCsv" class="btn-secondary">Export CSV</button>
+            <button id="btnSaveApps" class="btn-primary">Save Changes</button>
+          </div>
+        </div>
+        <div class="rainbow-divider"></div>
+
+        <div class="table-wrapper">
+          <table class="tracker-table">
+            <thead>
+              <tr>
+                <th style="min-width: 130px;">Date</th>
+                <th style="min-width: 140px;">Company</th>
+                <th style="min-width: 160px;">Position</th>
+                <th style="min-width: 180px;">Job Link</th>
+                <th style="text-align: center;">Applied</th>
+                <th style="text-align: center;">Optimized</th>
+                <th style="text-align: center;">LinkedIn Reach</th>
+                <th style="text-align: center;">Cold Email</th>
+                <th style="text-align: center;">Selected</th>
+                <th style="min-width: 110px;">Stage</th>
+                <th style="text-align: center;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="trackerTableBody">
+              <!-- Dynamically populated from job_applications.csv -->
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toastMsg" class="toast-msg"></div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p>Built with ❤️ by <a href="https://www.linkedin.com/in/sampreet-v-70b36b1a1" target="_blank" rel="noopener">Sampreet Vaidya</a></p>
+  </footer>
+
+  <script src="assets/web_app.js"></script>
+</body>
+</html>
+

@@ -52,10 +52,23 @@ def format_resume(json_data):
 
 def clean_json_response(response_text):
     """
-    Clean the JSON parameter by removing extra spaces and newlines.
+    Clean the JSON string by removing markdown code blocks, preamble text, and parsing JSON safely.
     """
-    response = response_text.replace("json", "")
-    response = response.strip('```').strip('\n').strip('```').strip('\n')
-    response = json.loads(response)
-    return response
+    text = str(response_text).strip()
+    
+    # Extract block inside ```json ... ``` if present
+    if "```json" in text:
+        parts = text.split("```json", 1)[1].split("```", 1)
+        text = parts[0].strip()
+    elif "```" in text:
+        parts = text.split("```", 1)[1].split("```", 1)
+        text = parts[0].strip()
+
+    # Extract outermost JSON object from { to }
+    start_brace = text.find("{")
+    end_brace = text.rfind("}")
+    if start_brace != -1 and end_brace != -1 and end_brace > start_brace:
+        text = text[start_brace:end_brace + 1]
+
+    return json.loads(text)
 

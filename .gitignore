@@ -5,3 +5,12 @@ share
 bin
 etc
 include
+pyvenv.cfg
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+**/.DS_Store

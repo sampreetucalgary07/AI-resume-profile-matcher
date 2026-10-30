@@ -3,8 +3,13 @@
     "gemini-1.5-flash",
     "gemini-1.5-flash-8b",
     "gemini-1.5-pro",
-    "gemini-2.0-flash-exp"
+    "gemini-2.0-flash-exp",
+    "ollama/llama3.2",
+    "ollama/llama3",
+    "ollama/mistral",
+    "ollama/phi3"
   ],
+  "ollama_host": "http://localhost:11434",
   "prompts_path": "prompts/prompts.json",
   "default_temperature": 0.2,
   "resume_path": "data/resume_info.json",
